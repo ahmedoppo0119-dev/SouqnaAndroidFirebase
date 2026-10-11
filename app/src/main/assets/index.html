@@ -1,0 +1,768 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>سوقنا 🛒</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Arial,Tahoma,sans-serif;background:#f7faf8;color:#17221d;padding-bottom:75px}
+header{background:#fff;padding:16px 14px 14px;border-bottom:1px solid #e6eee9;position:sticky;top:0;z-index:20}.logo{font-size:30px;font-weight:800;color:#078447;text-align:center}.tag{text-align:center;color:#666;margin:5px 0 14px;font-size:14px}.search{display:flex;max-width:720px;margin:auto;background:#fff;border:1px solid #ddd;border-radius:30px;overflow:hidden}.location{display:grid;grid-template-columns:1fr 1fr;gap:9px;max-width:720px;margin:0 auto 10px}.location select{width:100%;padding:12px 13px;border:1px solid #ddd;border-radius:12px;background:#fff;font-size:15px;color:#17221d;outline:none}.location select:disabled{background:#f2f4f3;color:#999}.search input{flex:1;border:0;padding:13px 16px;font-size:16px;outline:0}.search button{border:0;background:#078447;color:#fff;padding:0 20px;font-size:16px}
+main{max-width:1050px;margin:auto;padding:18px 14px 30px}.status{padding:10px 12px;border-radius:12px;background:#fff3cd;color:#765b00;margin-bottom:16px;font-size:14px}.section-title{display:flex;align-items:center;justify-content:space-between;margin:20px 0 12px}h2{margin:0;font-size:21px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px}.card{background:#fff;border:1px solid #e6eee9;border-radius:17px;padding:15px;box-shadow:0 2px 10px #00000008}.shop{cursor:pointer;transition:.15s}.shop:active{transform:scale(.98)}.shop .icon{font-size:32px}.name{font-weight:700;font-size:17px;margin:7px 0}.muted{color:#777;font-size:13px}.products{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.product{display:flex;justify-content:space-between;gap:10px;align-items:center}.price{font-weight:800;color:#d22f2f;font-size:18px;white-space:nowrap}.add{border:0;background:#078447;color:#fff;border-radius:10px;padding:8px 11px;cursor:pointer;margin-top:8px}.empty{text-align:center;padding:35px;color:#777;background:#fff;border-radius:17px;grid-column:1/-1}.hidden{display:none!important}.steps{display:flex;gap:5px;flex-wrap:wrap;margin-top:8px}.step{font-size:11px;color:#999;background:#f1f1f1;border-radius:10px;padding:5px 7px}.step.done{color:#08753f;background:#e8f7ef}.add:disabled{opacity:.55;cursor:not-allowed}
+footer{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #ddd;display:flex;justify-content:space-around;padding:8px 4px calc(8px + env(safe-area-inset-bottom));z-index:30}footer button{border:0;background:none;color:#555;font-size:11px;cursor:pointer;min-width:58px}footer .ico{display:block;font-size:21px;margin-bottom:2px}footer button.active{color:#078447;font-weight:700}.badge{position:absolute;background:#d22f2f;color:#fff;border-radius:99px;font-size:10px;padding:2px 5px;margin:-3px 0 0 -8px}.page{display:none}.page.active{display:block}.back{border:0;background:#e8f7ef;color:#08753f;border-radius:10px;padding:9px 13px;margin-bottom:12px;cursor:pointer}.cart-row{display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #eee;padding:12px 0}.qty button{border:0;border-radius:8px;background:#eee;padding:5px 10px;margin:0 3px}.total{font-size:20px;font-weight:800;margin-top:15px}.checkout{width:100%;border:0;background:#078447;color:#fff;padding:13px;border-radius:12px;font-size:17px;margin-top:12px}.form{display:grid;gap:10px}.form input{padding:13px;border:1px solid #ddd;border-radius:10px;font-size:15px}.listing-images{display:flex;gap:7px;overflow-x:auto;margin:8px 0}.listing-images img{width:120px;height:90px;object-fit:cover;border-radius:10px;border:1px solid #eee}.image-preview{display:flex;gap:7px;overflow-x:auto;margin:8px 0}.image-preview img{width:85px;height:70px;object-fit:cover;border-radius:8px}.order{border:1px solid #e5eae7;border-radius:13px;padding:12px;margin-bottom:10px;background:#fff}.pill{display:inline-block;background:#e8f7ef;color:#08753f;border-radius:20px;padding:4px 9px;font-size:12px}.notice{padding:12px;background:#f0f4f2;border-radius:12px;color:#555}.toast-wrap{position:fixed;top:14px;left:12px;right:12px;z-index:1000;display:grid;gap:8px;pointer-events:none}.toast{pointer-events:auto;background:#17221d;color:#fff;border-radius:14px;padding:13px 15px;box-shadow:0 8px 30px #0003;font-size:14px}.toast b{display:block;margin-bottom:4px}.toast .close{float:left;border:0;background:transparent;color:#fff;font-size:18px;cursor:pointer}
+@media(max-width:650px){.location{grid-template-columns:1fr}.grid{grid-template-columns:repeat(2,1fr)}.products{grid-template-columns:1fr}.logo{font-size:28px}.card{padding:13px}}
+
+/* Souqna modern home redesign */
+body{background:#f4f8f5;color:#172b22}
+header{background:rgba(255,255,255,.97);padding:13px 14px 15px;border-bottom:1px solid #e2ece5;box-shadow:0 5px 20px #173d2b0a}
+.logo{font-size:29px;letter-spacing:-.7px;color:#087847;display:flex;align-items:center;justify-content:center;gap:7px}
+.logo:before{content:'🛍️';font-size:25px}
+.tag{margin:4px 0 13px;color:#6a7c72;font-size:13px}
+.search{border:1px solid #dce8df;border-radius:16px;background:#f7faf8;box-shadow:0 3px 12px #0c46200a}
+.search input{background:transparent}.search button{background:#087847;padding:0 19px;font-weight:700}
+.location select{border-color:#dce8df;background:#fff}
+main{padding-top:16px}
+.welcome-hero{position:relative;overflow:hidden;border-radius:25px;padding:23px 20px 20px;margin:5px 0 22px;color:#fff;background:linear-gradient(125deg,#075b38 0%,#078447 55%,#24a76a 100%);box-shadow:0 12px 28px #08784726;min-height:172px}
+.welcome-hero:before{content:'🛒';position:absolute;left:12px;bottom:-17px;font-size:104px;opacity:.16;transform:rotate(-12deg)}
+.welcome-hero:after{content:'';position:absolute;width:180px;height:180px;border:1px solid #ffffff20;border-radius:50%;left:-55px;top:-75px;box-shadow:0 0 0 22px #ffffff09,0 0 0 44px #ffffff08}
+.hero-kicker{display:inline-block;background:#ffffff22;border:1px solid #ffffff35;border-radius:30px;padding:5px 10px;font-size:12px;margin-bottom:10px;position:relative;z-index:1}
+.welcome-hero h1{font-size:25px;line-height:1.4;margin:0 0 7px;max-width:78%;position:relative;z-index:1}
+.welcome-hero p{font-size:13px;line-height:1.8;margin:0 0 14px;color:#e7fff0;max-width:80%;position:relative;z-index:1}
+.hero-actions{display:flex;gap:8px;flex-wrap:wrap;position:relative;z-index:1}
+.hero-actions button{border:0;border-radius:11px;padding:10px 13px;font-family:inherit;font-weight:700;font-size:13px;cursor:pointer}
+.hero-primary{background:#fff;color:#087847}.hero-secondary{background:#ffffff20;color:#fff;border:1px solid #ffffff50!important}
+.home-section-head{display:flex;align-items:center;justify-content:space-between;margin:23px 2px 12px}
+.home-section-head h2{font-size:19px}.section-hint{font-size:12px;color:#809086}
+.category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:10px;margin:0 0 22px}
+.category-tile{position:relative;min-height:116px;display:flex;flex-direction:column;align-items:flex-start;justify-content:space-between;text-align:right;border:1px solid #e3eee7!important;border-radius:18px!important;padding:13px!important;background:linear-gradient(145deg,#fff,#f8fcf9)!important;box-shadow:0 5px 16px #174b2b08;cursor:pointer;transition:transform .15s,box-shadow .15s}
+.category-tile:active{transform:scale(.97)}
+.category-icon{display:grid;place-items:center;width:42px;height:42px;border-radius:14px;background:#e7f7ed;font-size:24px;margin-bottom:10px}
+.category-tile b{font-size:13px;line-height:1.5;color:#20372b}
+.category-tile small{font-size:10px;line-height:1.5;color:#829087;margin-top:3px}
+.home-panel{background:#fff;border:1px solid #e6eee9;border-radius:20px;padding:15px;margin-bottom:18px;box-shadow:0 4px 16px #174b2b05}
+.section-title{margin:20px 2px 12px}
+.section-title h2{font-size:19px}
+.shop{border-radius:17px;box-shadow:0 4px 15px #174b2b08}
+footer{box-shadow:0 -5px 22px #173d2b0a;border-top:1px solid #e6eee9;backdrop-filter:blur(12px)}
+footer button.active{color:#087847}
+@media(max-width:390px){.welcome-hero{padding:19px 16px}.welcome-hero h1{font-size:22px}.category-grid{gap:8px}.category-tile{padding:10px!important;min-height:110px}.category-tile b{font-size:12px}.category-icon{width:38px;height:38px}}
+
+</style>
+</head>
+<body>
+<header>
+  <div class="logo">سوقنا 🛒</div>
+  <div class="tag">كل محلات مصر في مكان واحد 🇪🇬</div>
+  <div class="location">
+    <select id="governorate" onchange="changeGovernorate()">
+      <option value="">اختر المحافظة</option>
+    </select>
+    <select id="area" onchange="changeArea()" disabled>
+      <option value="">اختر المنطقة</option>
+    </select>
+  </div>
+  <div class="search"><input id="search" placeholder="ابحث عن منتج أو محل" onkeydown="if(event.key==='Enter')doSearch()"><button onclick="doSearch()">بحث</button></div>
+</header>
+
+<div id="toastWrap" class="toast-wrap"></div>
+<main>
+  <div id="status" class="status">جاري الاتصال بقاعدة البيانات...</div>
+
+  <section id="homePage" class="page active">
+    <div class="welcome-hero">
+      <div class="hero-kicker">🇪🇬 سوق واحد لكل احتياجاتك</div>
+      <h1>أهلاً بيك في سوقنا</h1>
+      <p>اشتري، بيع، واكتشف المحلات والخدمات القريبة منك بكل سهولة.</p>
+      <div class="hero-actions">
+        <button class="hero-primary" onclick="showPage('used')">♻️ اكتشف المستعمل</button>
+        <button class="hero-secondary" onclick="showPage('cars')">🚗 بيع عربيتك</button>
+      </div>
+    </div>
+    <div class="home-section-head"><h2>تصفّح الأقسام</h2><span class="section-hint">اختار اللي بتدور عليه</span></div>
+    <div class="category-grid">
+      <button class="category-tile" onclick="showPage('used')"><span class="category-icon">♻️</span><b>سوق المستعمل</b><small>بيع وشراء المستعمل</small></button>
+      <button class="category-tile" onclick="showPage('cars')"><span class="category-icon">🚗</span><b>بيع عربيتك</b><small>سيارات للبيع</small></button>
+      <button class="category-tile" onclick="showPage('realestate')"><span class="category-icon">🏠</span><b>عقارات</b><small>بيع وإيجار</small></button>
+      <button class="category-tile" onclick="showPage('materials')"><span class="category-icon">🧱</span><b>الخامات</b><small>بناء وتشطيب</small></button>
+      <button class="category-tile" onclick="showPage('crafts')"><span class="category-icon">🧰</span><b>صنايعي قريب منك</b><small>خدمات وحرفيين</small></button>
+      <button class="category-tile" onclick="showPage('couriers')"><span class="category-icon">🛵</span><b>مندوب منطقتك</b><small>توصيل محلي</small></button>
+    </div>
+    <div class="section-title"><h2>📍 محلات قريبة منك</h2></div>
+    <div id="nearbyShops" class="grid"></div>
+    <div class="section-title"><h2>🏪 كل المحلات في مصر</h2></div>
+    <div id="shops" class="grid"></div>
+    <div class="section-title"><h2>📍 منتجات قريبة منك</h2></div>
+    <div id="nearbyProducts" class="products"></div>
+    <div class="section-title"><h2 id="selectedShopTitle">🛍️ كل المنتجات في مصر</h2></div>
+    <div id="products" class="products"></div>
+  </section>
+
+  <section id="shopPage" class="page">
+    <button class="back" onclick="showPage('home')">← رجوع للمحلات</button>
+    <div id="shopDetail" class="card"></div>
+    <div class="section-title"><h2>🛍️ منتجات المحل</h2></div>
+    <div id="shopProducts" class="products"></div>
+  </section>
+
+  <section id="cartPage" class="page">
+    <h2>🛒 السلة</h2><div id="cart"></div>
+  </section>
+
+  <section id="ordersPage" class="page">
+    <h2>📦 طلباتي</h2><div id="orders" style="margin-top:12px"></div>
+  </section>
+
+  <section id="accountPage" class="page">
+    <h2>👤 حساب العميل</h2>
+    <div id="customerAuthCard" class="card" style="margin-top:12px">
+      <div class="notice">أنشئ حساب عميل بالبريد الإلكتروني وكلمة المرور، أو سجّل الدخول لحسابك.</div>
+      <div class="form" style="margin-top:10px">
+        <input id="customerEmail" type="email" autocomplete="email" placeholder="البريد الإلكتروني">
+        <input id="customerPassword" type="password" autocomplete="new-password" placeholder="كلمة المرور (6 أحرف على الأقل)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button class="checkout" style="margin-top:0" onclick="customerSignUp()">إنشاء حساب عميل</button>
+          <button class="checkout" style="margin-top:0;background:#555" onclick="customerSignIn()">تسجيل الدخول</button>
+        </div>
+      </div>
+      <div id="customerAuthMsg" class="muted" style="margin-top:10px"></div>
+    </div>
+    <div id="customerLoggedCard" class="card hidden" style="margin-top:12px">
+      <b>تم تسجيل الدخول كعميل ✓</b><div id="customerLoggedEmail" class="muted" style="margin-top:6px"></div>
+      <button class="add" style="margin-top:10px;background:#555" onclick="customerSignOut()">تسجيل الخروج</button>
+    </div>
+    <h3 style="margin-top:18px">بيانات العميل</h3>
+    <div class="card" style="margin-top:12px"><div class="form"><input id="customerName" placeholder="الاسم"><input id="customerPhone" placeholder="رقم الهاتف"><input id="customerAddress" placeholder="العنوان"><button class="checkout" onclick="saveAccount()">حفظ البيانات</button></div></div>
+    <div class="notice" style="margin-top:12px">احفظ بيانات التواصل لتسهيل إتمام الطلب. استخدم حساب العميل للشراء، وحساب التاجر من صفحة «إدارة المحل».</div><button class="checkout" style="margin-top:10px;background:#555" onclick="enableNotifications()">🔔 تفعيل إشعارات الطلبات</button>
+  </section>
+
+  <section id="sellerPage" class="page">
+    <h2>👨‍💼 حساب التاجر</h2>
+    <div id="sellerAccountCard" class="card" style="margin-top:12px">
+      <div class="notice">أنشئ حساب تاجر بالبريد الإلكتروني وكلمة المرور، ثم استخدم إدارة المحل لإدارة الطلبات.</div>
+      <div class="form" style="margin-top:10px">
+        <input id="sellerEmail" type="email" autocomplete="email" placeholder="البريد الإلكتروني للتاجر">
+        <input id="sellerPassword" type="password" autocomplete="new-password" placeholder="كلمة المرور (6 أحرف على الأقل)">
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px">
+          <button class="checkout" style="margin-top:0" onclick="sellerSignUp()">إنشاء حساب تاجر</button>
+          <button class="checkout" style="margin-top:0;background:#555" onclick="sellerSignIn()">تسجيل الدخول</button>
+        </div>
+      </div>
+      <div id="sellerAuthMsg" class="muted" style="margin-top:10px"></div>
+    </div>
+    <div id="sellerLoggedCard" class="card hidden" style="margin-top:12px">
+      <b>حساب التاجر</b>
+      <div id="sellerLoggedEmail" class="muted" style="margin-top:6px"></div>
+      <button class="add" style="margin-top:10px" onclick="sellerSignOut()">تسجيل الخروج</button>
+    </div>
+    <h2 style="margin-top:22px">🏪 إدارة المحل</h2>
+    <div id="sellerLogin" class="card" style="margin-top:12px">
+      <div class="notice">بعد تسجيل الدخول بحساب التاجر، اضغط لفتح لوحة المحل.</div>
+      <button class="checkout" style="margin-top:10px" onclick="sellerLogin()">دخول لوحة المحل</button>
+    </div>
+    <div id="sellerPanel" class="hidden" style="margin-top:12px">
+      <div class="card" style="margin-bottom:12px"><b id="sellerShopName">المحل</b><div class="muted">إدارة منتجات المحل والطلبات</div></div>
+      <div id="createShopCard" class="card hidden" style="margin-bottom:12px">
+        <h3>🏪 إنشاء محل لهذا الحساب</h3><div class="muted" style="margin:8px 0">لو حسابك ليس مربوطًا بمحل، أنشئ محلًا جديدًا. لن يتم تغيير ملكية أي محل آخر.</div>
+        <div class="form"><input id="newShopName" placeholder="اسم المحل"><input id="newShopPhone" placeholder="رقم الهاتف"><input id="newShopAddress" placeholder="العنوان"><input id="newShopGov" placeholder="المحافظة"><input id="newShopArea" placeholder="المنطقة"><button class="checkout" onclick="createSellerShop()">إنشاء المحل وربطه بحسابي</button><div id="createShopMsg" class="muted"></div></div>
+      </div>
+      <div class="card" style="margin-bottom:12px">
+        <h3 style="margin:0 0 10px">➕ إضافة منتج</h3>
+        <div class="form">
+          <input id="sellerProductName" placeholder="اسم المنتج">
+          <input id="sellerProductPrice" type="number" min="0" step="0.01" placeholder="السعر بالجنيه">
+          <button class="checkout" onclick="addSellerProduct()">إضافة المنتج</button>
+        </div>
+        <div id="sellerProductMsg" class="muted" style="margin-top:8px"></div>
+      </div>
+      <div class="section-title"><h3>🛍️ منتجات المحل</h3><button class="add" style="background:#555;margin:0" onclick="syncSellerProducts()">تحديث المنتجات</button></div>
+      <div id="sellerProducts" class="products"></div>
+      <div class="section-title"><h3>📦 طلبات المحل</h3></div>
+      <div id="sellerOrders"></div>
+    </div>
+  </section>
+
+  <section id="usedPage" class="page">
+    <button class="back" onclick="showPage('home')">← الرئيسية</button><h2>♻️ سوق المستعمل</h2>
+    <div class="card" style="margin:12px 0"><div class="notice">اعرض سلعة مستعملة للبيع. يلزم تسجيل الدخول بحساب العميل أو التاجر لإضافة إعلان.</div><div class="form" style="margin-top:10px"><input id="usedTitle" placeholder="اسم السلعة"><input id="usedPrice" type="number" min="0" placeholder="السعر بالجنيه"><input id="usedPhone" placeholder="رقم التواصل"><input id="usedGov" placeholder="المحافظة"><input id="usedArea" placeholder="المنطقة"><input id="usedDesc" placeholder="وصف السلعة وحالتها"><label class="muted" for="usedImages">📷 صور السلعة المستعملة (يمكن اختيار أكثر من صورة)</label><input id="usedImages" type="file" accept="image/*" multiple><div id="usedImagesPreview" class="muted">لم يتم اختيار صور بعد</div><button class="checkout" onclick="submitListing('used')">نشر إعلان المستعمل</button><div id="usedMsg" class="muted"></div></div></div><div id="usedList" class="grid"><div class="empty">جاري تحميل الإعلانات...</div></div>
+  </section>
+
+  <section id="craftsPage" class="page">
+    <button class="back" onclick="showPage('home')">← الرئيسية</button><h2>🧰 صنايعي قريب منك</h2>
+    <div class="card" style="margin:12px 0"><div class="notice">سجّل بياناتك كصنايعي ليقدر العملاء يتواصلوا معك. لا تنشر بيانات لا تريد مشاركتها علنًا.</div><div class="form" style="margin-top:10px"><input id="craftName" placeholder="الاسم"><input id="craftType" placeholder="التخصص: كهربائي، سباك، نقاش... "><input id="craftPhone" placeholder="رقم الهاتف"><input id="craftGov" placeholder="المحافظة"><input id="craftArea" placeholder="المنطقة"><input id="craftDesc" placeholder="الخبرة والخدمات والأسعار"><button class="checkout" onclick="submitListing('crafts')">إضافة بياناتي كصنايعي</button><div id="craftsMsg" class="muted"></div></div></div><div id="craftsList" class="grid"><div class="empty">جاري تحميل الصنايعية...</div></div>
+  </section>
+
+  <section id="couriersPage" class="page">
+    <button class="back" onclick="showPage('home')">← الرئيسية</button><h2>🛵 مندوب منطقتك</h2>
+    <div class="card" style="margin:12px 0"><div class="notice">سجّل كمندوب توصيل في منطقتك. بيانات التواصل ستظهر للعملاء.</div><div class="form" style="margin-top:10px"><input id="courierName" placeholder="اسم المندوب"><input id="courierPhone" placeholder="رقم الهاتف"><input id="courierGov" placeholder="المحافظة"><input id="courierArea" placeholder="المنطقة"><input id="courierVehicle" placeholder="وسيلة التوصيل: موتوسيكل، سيارة، مشي..."><input id="courierFee" type="number" min="0" placeholder="سعر التوصيل التقريبي بالجنيه"><button class="checkout" onclick="submitListing('couriers')">إضافة بياناتي كمندوب</button><div id="couriersMsg" class="muted"></div></div></div><div id="couriersList" class="grid"><div class="empty">جاري تحميل المندوبين...</div></div>
+  </section>
+  <section id="carsPage" class="page">
+    <button class="back" onclick="showPage('home')">← الرئيسية</button><h2>🚗 بيع عربيتك</h2>
+    <div class="card" style="margin:12px 0"><div class="notice">انشر إعلان سيارتك مع السعر والموديل ومكان المعاينة. تأكد من صحة البيانات قبل النشر.</div><div class="form" style="margin-top:10px"><input id="carTitle" placeholder="ماركة وموديل السيارة"><input id="carCategory" placeholder="الموديل والسنة وحالة السيارة"><input id="carPrice" type="number" min="0" placeholder="السعر بالجنيه"><input id="carPhone" placeholder="رقم التواصل"><input id="carGov" placeholder="المحافظة"><input id="carArea" placeholder="المنطقة"><input id="carDesc" placeholder="تفاصيل السيارة: الكيلومترات، الرخصة، الحالة..."><label class="muted" for="carImages">📷 صور السيارة (يمكن اختيار أكثر من صورة)</label><input id="carImages" type="file" accept="image/*" multiple><div id="carImagesPreview" class="muted">لم يتم اختيار صور بعد</div><button class="checkout" onclick="submitListing('cars')">نشر إعلان السيارة</button><div id="carsMsg" class="muted"></div></div></div><div id="carsList" class="grid"><div class="empty">جاري تحميل إعلانات السيارات...</div></div>
+  </section>
+  <section id="materialsPage" class="page">
+    <button class="back" onclick="showPage('home')">← الرئيسية</button><h2>🧱 بيع وشراء الخامات</h2>
+    <div class="card" style="margin:12px 0"><div class="notice">اعرض خامات جديدة أو فائضة عن مشروعك، مثل الأسمنت والحديد والسيراميك والدهانات وخامات التشطيب.</div><div class="form" style="margin-top:10px"><input id="materialTitle" placeholder="اسم الخامة أو المنتج"><input id="materialCategory" placeholder="التصنيف / الماركة / الوحدة"><input id="materialPrice" type="number" min="0" placeholder="السعر بالجنيه"><input id="materialPhone" placeholder="رقم التواصل"><input id="materialGov" placeholder="المحافظة"><input id="materialArea" placeholder="المنطقة"><input id="materialDesc" placeholder="الكمية والحالة والتفاصيل..."><label class="muted" for="materialImages">📷 صور الخامات والمنتج (يمكن اختيار أكثر من صورة)</label><input id="materialImages" type="file" accept="image/*" multiple><div id="materialImagesPreview" class="muted">لم يتم اختيار صور بعد</div><button class="checkout" onclick="submitListing('materials')">نشر إعلان الخامات</button><div id="materialsMsg" class="muted"></div></div></div><div id="materialsList" class="grid"><div class="empty">جاري تحميل إعلانات الخامات...</div></div>
+  </section>
+  <section id="realestatePage" class="page">
+    <button class="back" onclick="showPage('home')">← الرئيسية</button><h2>🏠 عقارات للبيع والإيجار</h2>
+    <div class="card" style="margin:12px 0"><div class="notice">انشر عقارًا للبيع أو الإيجار، واكتب نوع العقار ومكانه والسعر والتفاصيل بوضوح.</div><div class="form" style="margin-top:10px"><input id="estateTitle" placeholder="عنوان الإعلان / وصف مختصر"><input id="estateCategory" placeholder="نوع العقار: شقة، فيلا، أرض، محل..."><input id="estatePrice" type="number" min="0" placeholder="السعر أو قيمة الإيجار بالجنيه"><input id="estatePhone" placeholder="رقم التواصل"><input id="estateGov" placeholder="المحافظة"><input id="estateArea" placeholder="المنطقة"><input id="estateDesc" placeholder="المساحة، عدد الغرف، الدور، بيع أم إيجار..."><label class="muted" for="estateImages">📷 صور العقار (يمكن اختيار أكثر من صورة)</label><input id="estateImages" type="file" accept="image/*" multiple><div id="estateImagesPreview" class="muted">لم يتم اختيار صور بعد</div><button class="checkout" onclick="submitListing('realestate')">نشر إعلان العقار</button><div id="realestateMsg" class="muted"></div></div></div><div id="realestateList" class="grid"><div class="empty">جاري تحميل إعلانات العقارات...</div></div>
+  </section>
+</main>
+
+<footer>
+ <button id="navHome" class="active" onclick="showPage('home')"><span class="ico">🏠</span>الرئيسية</button>
+ <button id="navCart" onclick="showPage('cart')"><span class="ico">🛒<span id="cartBadge" class="badge hidden">0</span></span>السلة</button>
+ <button id="navOrders" onclick="showPage('orders')"><span class="ico">📦</span>طلباتي</button>
+ <button id="navAccount" onclick="showPage('account')"><span class="ico">👤</span>حسابي</button>
+ <button id="navSeller" onclick="showPage('seller')"><span class="ico">🏪</span>إدارة المحل</button>
+</footer>
+
+<script>
+const SUPABASE_URL="https://mqdskheimwtgnekszjxt.supabase.co";
+const SUPABASE_KEY="sb_publishable_hAvTqtFmwpreVLl38w9G6g_YB_U4pb1";
+let shops=[], products=[], selectedShop=null;
+let selectedGovernorate=localStorage.getItem('souqna_governorate')||'';
+let selectedArea=localStorage.getItem('souqna_area')||'';
+const governorates={
+  'القاهرة':['مدينة نصر','مصر الجديدة','المعادي','حلوان','شبرا','وسط القاهرة'],
+  'الجيزة':['إمبابة','الدقي','العجوزة','الهرم','فيصل','6 أكتوبر','الشيخ زايد'],
+  'الإسكندرية':['المنتزه','سيدي بشر','العصافرة','سموحة','محرم بك','العجمي'],
+  'القليوبية':['شبرا الخيمة','بنها','قليوب','الخانكة'],
+  'الدقهلية':['المنصورة','طلخا','ميت غمر','دكرنس'],
+  'أسيوط':['أسيوط','أبوتيج','ديروط','القوصية','منفلوط'],
+  'سوهاج':['سوهاج','أخميم','جرجا','طهطا'],
+  'المنيا':['المنيا','ملوي','سمالوط','بني مزار'],
+  'الشرقية':['الزقازيق','بلبيس','العاشر من رمضان','منيا القمح'],
+  'البحيرة':['دمنهور','كفر الدوار','رشيد','إيتاي البارود'],
+  'الغربية':['طنطا','المحلة الكبرى','زفتى','كفر الزيات'],
+  'كفر الشيخ':['كفر الشيخ','دسوق','فوه'],
+  'الفيوم':['الفيوم','سنورس','إطسا'],
+  'بني سويف':['بني سويف','الواسطي','الفشن'],
+  'الإسماعيلية':['الإسماعيلية','فايد','التل الكبير'],
+  'بورسعيد':['بورسعيد','بورفؤاد'],
+  'السويس':['السويس'],
+  'دمياط':['دمياط','رأس البر','فارسكور'],
+  'الأقصر':['الأقصر','إسنا','أرمنت'],
+  'قنا':['قنا','نجع حمادي','قفط'],
+  'أسوان':['أسوان','إدفو','كوم أمبو'],
+  'مطروح':['مرسى مطروح','الحمام','العلمين'],
+  'شمال سيناء':['العريش','رفح','الشيخ زويد'],
+  'جنوب سيناء':['شرم الشيخ','دهب','نويبع'],
+  'الوادي الجديد':['الخارجة','الداخلة'],
+  'البحر الأحمر':['الغردقة','سفاجا','مرسى علم']
+};
+let cart=JSON.parse(localStorage.getItem('souqna_cart')||'[]');
+let orders=JSON.parse(localStorage.getItem('souqna_orders')||'[]');
+let account=JSON.parse(localStorage.getItem('souqna_account')||'{}');
+
+async function api(table,params=""){
+ const url=`${SUPABASE_URL}/rest/v1/${table}${params}`;
+ const controller=new AbortController();
+ const timer=setTimeout(()=>controller.abort(),12000);
+ try{
+  const r=await fetch(url,{cache:'no-store',signal:controller.signal,headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`,Accept:'application/json', 'Cache-Control':'no-cache'}});
+  const body=await r.text();
+  if(!r.ok)throw new Error(`${table}: HTTP ${r.status} — ${body}`);
+  return body?JSON.parse(body):[];
+ }catch(e){
+  if(e.name==='AbortError') throw new Error(`${table}: انتهت مهلة الاتصال بـ Supabase`);
+  throw e;
+ }finally{clearTimeout(timer);}
+}
+function esc(v){return String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#039;'}[m]));}
+function money(v){return v!=null?Number(v).toLocaleString('ar-EG')+' جنيه':'—'}
+
+function setupLocations(){
+ const g=document.getElementById('governorate');
+ Object.keys(governorates).forEach(x=>g.insertAdjacentHTML('beforeend',`<option value="${esc(x)}">${esc(x)}</option>`));
+ if(selectedGovernorate && governorates[selectedGovernorate]){
+  g.value=selectedGovernorate; fillAreas(selectedGovernorate,selectedArea);
+ }
+}
+function fillAreas(gov,selected=''){
+ const a=document.getElementById('area'); a.innerHTML='<option value="">اختر المنطقة</option>'; a.disabled=!gov;
+ (governorates[gov]||[]).forEach(x=>a.insertAdjacentHTML('beforeend',`<option value="${esc(x)}">${esc(x)}</option>`));
+ if(selected && (governorates[gov]||[]).includes(selected)) a.value=selected;
+}
+function changeGovernorate(){
+ selectedGovernorate=document.getElementById('governorate').value; selectedArea='';
+ localStorage.setItem('souqna_governorate',selectedGovernorate); localStorage.removeItem('souqna_area');
+ fillAreas(selectedGovernorate); selectedShop=null; applyLocationFilter();
+}
+function changeArea(){
+ selectedArea=document.getElementById('area').value; localStorage.setItem('souqna_area',selectedArea); selectedShop=null; applyLocationFilter();
+}
+function shopField(s,names){for(const n of names){if(s && s[n]!=null && String(s[n]).trim()) return String(s[n]).trim();}return '';}
+function shopLocationInfo(s){
+ const g=shopField(s,['governorate','gov','province','محافظة']);
+ const a=shopField(s,['area','region','district','منطقة']);
+ return {g,a};
+}
+function nearbyShopScore(s){
+ if(!selectedGovernorate) return 2;
+ const {g,a}=shopLocationInfo(s);
+ if(selectedArea && g===selectedGovernorate && a===selectedArea) return 0;
+ if(g===selectedGovernorate) return 1;
+ return 2;
+}
+function sortShopsByLocation(data){return [...data].sort((a,b)=>nearbyShopScore(a)-nearbyShopScore(b));}
+function nearbyShopsOnly(data){
+ if(!selectedGovernorate) return [];
+ return sortShopsByLocation(data).filter(s=>nearbyShopScore(s)<2);
+}
+function applyLocationFilter(){
+ const ordered=sortShopsByLocation(shops);
+ const nearby=nearbyShopsOnly(shops);
+ renderShops(nearby,'nearbyShops', nearby.length ? '' : (selectedGovernorate ? 'لا توجد محلات قريبة مسجلة حاليًا' : 'اختَر المحافظة والمنطقة لرؤية المحلات القريبة أولًا'));
+ renderShops(ordered,'shops');
+ const nearbyIds=new Set(nearby.map(s=>String(s.id)));
+ const nearbyProducts=products.filter(p=>nearbyIds.has(String(p.shop_id)));
+ renderProducts(nearbyProducts,'nearbyProducts');
+ renderProducts(products,'products');
+ const status=document.getElementById('status');
+ if(selectedGovernorate){
+  const place=selectedArea?`${selectedGovernorate} — ${selectedArea}`:selectedGovernorate;
+  status.textContent=`${place} — ترتيب المحلات القريبة أولًا • ${shops.length} محل و ${products.length} منتج متاحين في مصر`;
+ } else {
+  status.textContent=`متصل بقاعدة البيانات ✓ — ${shops.length} محل و ${products.length} منتج في مصر`;
+ }
+ status.style.background='#e8f7ef';status.style.color='#08753f';
+}
+
+async function load(){
+ const status=document.getElementById('status');
+ status.textContent='جاري الاتصال بقاعدة البيانات...';
+ try{
+  let shopError=null, productError=null;
+  try{ shops=await api('shops','?select=*'); }catch(e){ shopError=e; shops=[]; }
+  try{ products=await api('products','?select=id,name,price,shop_id'); }catch(e){ productError=e; products=[]; }
+  applyLocationFilter();updateCart();
+  if(shopError){
+   status.textContent='تعذر تحميل المحلات من قاعدة البيانات. '+shopError.message;
+   status.style.background='#ffe8e8';status.style.color='#a11';
+   console.error(shopError); return;
+  }
+  if(productError){
+   status.textContent=`تم تحميل ${shops.length} محل، لكن المنتجات لم تُحمّل. راجع صلاحية SELECT لجدول products في Supabase.`;
+   status.style.background='#fff3cd';status.style.color='#765b00';
+   console.error(productError); return;
+  }
+  status.textContent=`متصل بقاعدة البيانات ✓ — ${shops.length} محل و ${products.length} منتج`;
+  status.style.background='#e8f7ef';status.style.color='#08753f';
+ }catch(e){
+  status.textContent='تعذر الاتصال بقاعدة البيانات: '+(e.message||'خطأ غير معروف');
+  status.style.background='#ffe8e8';status.style.color='#a11';console.error(e);
+  applyLocationFilter();updateCart();
+ }
+}
+function renderShops(data,targetId='shops',emptyText='لا توجد محلات مضافة حتى الآن'){
+ const el=document.getElementById(targetId); if(!el)return;
+ if(!data.length){el.innerHTML=`<div class="empty">${esc(emptyText)}</div>`;return}
+ el.innerHTML=data.map(s=>`<div class="card shop" onclick="openShop('${esc(s.id)}')"><div class="icon">🏪</div><div class="name">${esc(s.name)}</div><div class="muted">${esc(s.category||'متجر')} ${s.address?'• '+esc(s.address):''}</div>${s.phone?`<div class="muted">📞 ${esc(s.phone)}</div>`:''}</div>`).join('');
+}
+function renderProducts(data,targetId='products'){
+ const el=document.getElementById(targetId); if(!el)return;
+ let list=selectedShop?data.filter(p=>String(p.shop_id)===String(selectedShop.id||selectedShop)):data;
+ if(!list.length){el.innerHTML='<div class="empty">لا توجد منتجات متاحة</div>';return}
+ const map={};shops.forEach(s=>map[s.id]=s.name);
+ el.innerHTML=list.map(p=>`<div class="card product"><div><div class="name">${esc(p.name)}</div><div class="muted">${esc(map[p.shop_id]||'محل')}</div><div class="price">${money(p.price)}</div><button class="add" onclick="addToCart('${esc(p.id)}')">+ أضف للسلة</button></div></div>`).join('');
+}
+function openShop(id){
+ selectedShop=shops.find(s=>String(s.id)===String(id))||null;
+ if(!selectedShop){alert('المحل غير موجود');return;}
+ showPage('shop');
+ renderShopDetail();
+}
+function renderShopDetail(){
+ const detail=document.getElementById('shopDetail'), list=document.getElementById('shopProducts');
+ if(!detail||!list||!selectedShop)return;
+ const loc=shopLocationInfo(selectedShop);
+ detail.innerHTML=`<div style="font-size:38px">🏪</div><div class="name" style="font-size:23px">${esc(selectedShop.name)}</div><div class="muted">${esc(selectedShop.category||'متجر')}</div>${loc.g||loc.a?`<div class="muted" style="margin-top:8px">📍 ${esc([loc.g,loc.a].filter(Boolean).join(' • '))}</div>`:''}${selectedShop.address?`<div class="muted" style="margin-top:5px">العنوان: ${esc(selectedShop.address)}</div>`:''}${selectedShop.phone?`<div style="margin-top:10px"><a href="tel:${esc(selectedShop.phone)}" class="add" style="display:inline-block;text-decoration:none">📞 اتصال بالمحل</a></div>`:''}`;
+ const shopProducts=products.filter(p=>String(p.shop_id)===String(selectedShop.id));
+ renderProducts(shopProducts,'shopProducts');
+}
+function clearShop(){selectedShop=null;applyLocationFilter()}
+async function doSearch(){
+ const q=document.getElementById('search').value.trim().toLowerCase();
+ if(!q){selectedShop=null;applyLocationFilter();return;}
+ const s=sortShopsByLocation(shops).filter(x=>String(x.name||'').toLowerCase().includes(q)||String(x.category||'').toLowerCase().includes(q));
+ const p=products.filter(x=>String(x.name||'').toLowerCase().includes(q));
+ const nearbyIds=new Set(nearbyShopsOnly(shops).map(x=>String(x.id)));
+ const nearbyResults=s.filter(x=>nearbyIds.has(String(x.id)));
+ const nearbyProductResults=p.filter(x=>nearbyIds.has(String(x.shop_id)));
+ selectedShop=null;
+ renderShops(nearbyResults,'nearbyShops','لا توجد نتائج قريبة لهذا البحث');
+ renderShops(s,'shops','لا توجد محلات مطابقة لهذا البحث');
+ renderProducts(nearbyProductResults,'nearbyProducts');
+ renderProducts(p,'products');
+ document.getElementById('status').textContent=`نتائج البحث في كل مصر عن: ${q}`;
+}
+function addToCart(id){const p=products.find(x=>String(x.id)===String(id));if(!p)return;const differentShop=cart.length&&cart.some(x=>String(x.shop_id)!==String(p.shop_id));if(differentShop){if(!confirm('السلة تحتوي منتجات من محل آخر. هل تريد تفريغها وإضافة هذا المنتج؟'))return;cart=[];}const old=cart.find(x=>String(x.id)===String(id));if(old)old.qty++;else cart.push({id:p.id,name:p.name,price:Number(p.price)||0,shop_id:p.shop_id,qty:1});saveCart();showPage('cart');}
+function saveCart(){localStorage.setItem('souqna_cart',JSON.stringify(cart));updateCart();}
+function updateCart(){const n=cart.reduce((a,x)=>a+x.qty,0);const b=document.getElementById('cartBadge');b.textContent=n;b.classList.toggle('hidden',n===0);renderCart();}
+function renderCart(){const el=document.getElementById('cart');if(!el)return;if(!cart.length){el.innerHTML='<div class="empty" style="margin-top:12px">السلة فارغة 🛒<br><button class="add" onclick="showPage(\'home\')">ابدأ التسوق</button></div>';return}let total=cart.reduce((a,x)=>a+x.price*x.qty,0);el.innerHTML=cart.map((x,i)=>`<div class="cart-row"><div><b>${esc(x.name)}</b><div class="muted">${money(x.price)}</div></div><div class="qty"><button onclick="changeQty(${i},-1)">−</button>${x.qty}<button onclick="changeQty(${i},1)">+</button></div></div>`).join('')+`<div class="total">الإجمالي: ${money(total)}</div><div class="card" style="margin-top:12px;border:1px solid #b9e3ca;background:#f4fbf6"><b>💳 وسيلة الدفع</b><label style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="radio" name="paymentMethod" value="cash_on_delivery" checked onchange="updatePaymentHelp()"> 💵 الدفع عند الاستلام</label><label style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="radio" name="paymentMethod" value="wallet" onchange="updatePaymentHelp()"> 📱 الدفع بالمحفظة الإلكترونية</label><label style="display:flex;gap:8px;align-items:center;margin-top:12px"><input type="radio" name="paymentMethod" value="bank_card" onchange="updatePaymentHelp()"> 💳 الدفع بالبطاقة البنكية</label><div id="paymentHelp" class="muted" style="margin-top:10px;line-height:1.8">هتدفع للتاجر عند استلام الطلب. حالة الدفع تفضل «غير مدفوع» لحد تحصيل المبلغ.</div></div><button class="checkout" onclick="placeOrder()">تأكيد الطلب</button><button class="add" style="background:#777;width:100%;margin-top:8px" onclick="cart=[];saveCart()">تفريغ السلة</button>`;}
+function updatePaymentHelp(){const method=document.querySelector('input[name="paymentMethod"]:checked')?.value;const el=document.getElementById('paymentHelp');if(!el)return;if(method==='cash_on_delivery')el.textContent='هتدفع للتاجر عند استلام الطلب. حالة الدفع تفضل «غير مدفوع» لحد تحصيل المبلغ.';else if(method==='wallet')el.textContent='الدفع بالمحفظة الإلكترونية — غير متاح للدفع الفعلي حاليًا، لحين ربط بوابة دفع معتمدة. اختار الدفع عند الاستلام لإتمام الطلب الآن.';else el.textContent='الدفع بالبطاقة البنكية — غير متاح للدفع الفعلي حاليًا، لحين ربط بوابة دفع معتمدة. اختار الدفع عند الاستلام لإتمام الطلب الآن.';}
+function changeQty(i,d){cart[i].qty+=d;if(cart[i].qty<=0)cart.splice(i,1);saveCart();}
+async function placeOrder(){
+ if(!cart.length)return alert('السلة فارغة');
+ const selectedPayment=document.querySelector('input[name="paymentMethod"]:checked')?.value||'cash_on_delivery';
+ if(selectedPayment!=='cash_on_delivery'){alert('وسيلة الدفع دي ظاهرة للاختيار، لكنها لسه مش مفعّلة للدفع الحقيقي. لازم نربط بوابة دفع معتمدة ونختبرها الأول. تقدر تختار الدفع عند الاستلام لإرسال الطلب الآن.');return;}
+ if(!account.name||!account.phone||!account.address){showPage('account');alert('اكتب الاسم ورقم الهاتف والعنوان أولًا');return}
+ const shopId=Number(cart[0].shop_id);
+ if(!Number.isInteger(shopId)||shopId<=0)return alert('تعذر تحديد المحل. أعد اختيار المنتجات من صفحة المحل.');
+ if(cart.some(x=>Number(x.shop_id)!==shopId))return alert('لا يمكن إرسال منتجات من أكثر من محل في طلب واحد.');
+ const total=cart.reduce((a,x)=>a+Number(x.price)*Number(x.qty),0);
+ const localId='SQ'+Date.now();
+ const items=cart.map(x=>({product_id:Number(x.id),quantity:Number(x.qty),unit_price:Number(x.price),subtotal:Number(x.price)*Number(x.qty)}));
+ try{
+   // Create the order and its items in one SECURITY DEFINER RPC transaction.
+   // This avoids INSERT ... RETURNING being blocked by the customer's intentionally private SELECT policy.
+   const r=await fetch(`${SUPABASE_URL}/rest/v1/rpc/souqna_create_order`,{
+     method:'POST',
+     headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${SUPABASE_KEY}`,'Content-Type':'application/json'},
+     body:JSON.stringify({p_customer_name:account.name,p_customer_phone:account.phone,p_customer_address:account.address,p_shop_id:shopId,p_total_amount:total,p_status:'جديد',p_items:items})
+   });
+   const responseText=await r.text();
+   if(!r.ok)throw new Error(responseText||`HTTP ${r.status}`);
+   let dbOrder;try{dbOrder=JSON.parse(responseText)}catch(_){throw new Error('استجابة غير مفهومة من قاعدة البيانات')}
+   if(Array.isArray(dbOrder))dbOrder=dbOrder[0];
+   if(!dbOrder?.id)throw new Error('لم يتم إرجاع رقم الطلب من قاعدة البيانات');
+   const localOrder={id:localId,db_id:dbOrder.id,date:new Date().toLocaleString('ar-EG'),items:cart.map(x=>({...x})),total,status:'جديد',customer:{...account},shop_id:shopId,payment_method:'cash_on_delivery',payment_status:'unpaid'};
+   orders.unshift(localOrder);localStorage.setItem('souqna_orders',JSON.stringify(orders));
+   cart=[];saveCart();await syncOrdersFromDB();renderOrders();showPage('orders');alert(`تم إرسال الطلب للمحل بنجاح ✓\nرقم الطلب: ${dbOrder.id}`);
+ }catch(e){
+   console.error('Souqna atomic order RPC failed',{error:e,shopId,items,accountPhone:account.phone});
+   const detail=String(e?.message||e||'خطأ غير معروف').slice(0,700);
+   alert('لم يتم إرسال الطلب إلى المحل، ولم يتم تسجيله على قاعدة البيانات.\nالسلة ما زالت محفوظة؛ لا تعِد الطلب قبل مراجعة الخطأ.\n\nتفاصيل الخطأ: '+detail+'\n\nرقم المحل: '+String(shopId));
+ }
+}
+function statusSteps(status){const steps=['جديد','جاري التجهيز','خرج للتوصيل','تم التسليم'];const idx=steps.indexOf(status);return '<div class="steps">'+steps.map((x,i)=>`<span class="step ${i<=idx?'done':''}">${i<=idx?'✓':'○'} ${x}</span>`).join('')+'</div>';}
+function renderOrders(){
+ const el=document.getElementById('orders');
+ if(!el)return;
+ const merged=[...dbOrders,...orders.filter(o=>!dbOrders.some(d=>String(d.db_id||d.id)===String(o.db_id||o.id)))];
+ if(!merged.length){el.innerHTML='<div class="empty" style="margin-top:12px">لا توجد طلبات حتى الآن</div>';return}
+ el.innerHTML=merged.map(o=>`<div class="order"><div><b>طلب #${esc(o.display_id||o.id)}</b> <span class="pill">${esc(o.status||'جديد')}</span></div><div class="muted">${esc(o.date||o.created_at||'')}</div>${statusSteps(o.status||'جديد')}<div style="margin-top:7px">${(o.items||[]).map(x=>`${esc(x.product_name||x.name)} × ${x.quantity||x.qty}`).join('، ')}</div><div class="price" style="margin-top:7px">${money(o.total)}</div></div>`).join('');
+}
+function saveAccount(){account={name:document.getElementById('customerName').value.trim(),phone:document.getElementById('customerPhone').value.trim(),address:document.getElementById('customerAddress').value.trim()};localStorage.setItem('souqna_account',JSON.stringify(account));alert('تم حفظ البيانات ✓');}
+function loadAccount(){document.getElementById('customerName').value=account.name||'';document.getElementById('customerPhone').value=account.phone||'';document.getElementById('customerAddress').value=account.address||'';}
+let customerSession=JSON.parse(localStorage.getItem('souqna_customer_session')||'null');
+function setCustomerAuthMsg(msg,ok=false){const el=document.getElementById('customerAuthMsg');if(el){el.textContent=msg||'';el.style.color=ok?'#08753f':'#b33';}}
+function renderCustomerAccount(){const card=document.getElementById('customerAuthCard'),logged=document.getElementById('customerLoggedCard'),email=document.getElementById('customerLoggedEmail');if(!card||!logged)return;if(customerSession?.access_token){card.classList.add('hidden');logged.classList.remove('hidden');if(email)email.textContent='البريد: '+(customerSession.email||'');}else{card.classList.remove('hidden');logged.classList.add('hidden');}}
+async function customerSignUp(){
+ const email=(document.getElementById('customerEmail')?.value||'').trim();const password=document.getElementById('customerPassword')?.value||'';
+ if(!email||!email.includes('@')){setCustomerAuthMsg('اكتب بريدًا إلكترونيًا صحيحًا.');return;}if(password.length<6){setCustomerAuthMsg('كلمة المرور يجب أن تكون 6 أحرف على الأقل.');return;}
+ setCustomerAuthMsg('جاري إنشاء حساب العميل...');
+ try{const r=await fetch(`${SUPABASE_URL}/auth/v1/signup`,{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify({email,password,data:{account_type:'customer'}})});const data=await r.json();if(!r.ok)throw new Error(data.msg||data.error_description||data.message||'تعذر إنشاء الحساب');
+  if(data.access_token){customerSession={access_token:data.access_token,refresh_token:data.refresh_token,email:data.user?.email||email,user_id:data.user?.id||'',account_type:'customer'};localStorage.setItem('souqna_customer_session',JSON.stringify(customerSession));setCustomerAuthMsg('تم إنشاء حساب العميل وتسجيل الدخول ✓',true);}
+  else{setCustomerAuthMsg('تم إنشاء الحساب. افتح بريدك لتأكيده، ثم ارجع وسجّل الدخول.',true);}renderCustomerAccount();
+ }catch(e){setCustomerAuthMsg(e.message||'تعذر إنشاء الحساب.');}
+}
+async function customerSignIn(){
+ const email=(document.getElementById('customerEmail')?.value||'').trim();const password=document.getElementById('customerPassword')?.value||'';if(!email||!password){setCustomerAuthMsg('اكتب البريد الإلكتروني وكلمة المرور أولًا.');return;}
+ setCustomerAuthMsg('جاري تسجيل الدخول...');try{const r=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify({email,password})});const data=await r.json();if(!r.ok)throw new Error(data.error_description||data.msg||data.message||'بيانات الدخول غير صحيحة');
+  const role=data.user?.user_metadata?.account_type;if(role!=='customer')throw new Error('هذا الحساب غير مسجل كحساب عميل. استخدم حساب العميل أو أنشئ حسابًا جديدًا.');
+  customerSession={access_token:data.access_token,refresh_token:data.refresh_token,email:data.user?.email||email,user_id:data.user?.id||'',account_type:'customer'};localStorage.setItem('souqna_customer_session',JSON.stringify(customerSession));setCustomerAuthMsg('تم تسجيل الدخول ✓',true);renderCustomerAccount();
+ }catch(e){setCustomerAuthMsg(e.message||'تعذر تسجيل الدخول.');}
+}
+function customerSignOut(){customerSession=null;localStorage.removeItem('souqna_customer_session');setCustomerAuthMsg('تم تسجيل الخروج.');renderCustomerAccount();}
+let sellerSession=JSON.parse(localStorage.getItem('souqna_seller_session')||'null');
+let sellerUnlocked=!!(sellerSession?.access_token);
+// Never infer a merchant's shop from the first public shop row.
+let currentSellerShop=null;
+let dbOrders=[];
+let notificationPrimed=false;
+let notificationSnapshot=new Map();
+let notificationReady=false;
+function showToast(title,body){
+ const wrap=document.getElementById('toastWrap'); if(!wrap)return;
+ const el=document.createElement('div'); el.className='toast';
+ el.innerHTML=`<button class="close" aria-label="إغلاق" onclick="this.parentElement.remove()">×</button><b>🔔 ${esc(title)}</b><div>${esc(body)}</div>`;
+ wrap.appendChild(el); setTimeout(()=>el.remove(),7000);
+}
+async function enableNotifications(){
+ notificationPrimed=true;
+ if(!('Notification' in window)){showToast('الإشعارات','المتصفح لا يدعم إشعارات النظام، لكن الإشعارات داخل التطبيق ستعمل.');return;}
+ try{
+  const p=await Notification.requestPermission();
+  notificationReady=p==='granted';
+  showToast('الإشعارات',p==='granted'?'تم تفعيل إشعارات الطلبات ✓':'لم يتم السماح بإشعارات النظام. ستظل الإشعارات داخل التطبيق تعمل.');
+ }catch(e){showToast('الإشعارات','تعذر تفعيل إشعارات النظام.');}
+}
+function systemNotify(title,body){
+ if(notificationReady && 'Notification' in window && Notification.permission==='granted'){
+   try{new Notification(title,{body,tag:'souqna-order'});}catch(e){}
+ }
+ showToast(title,body);
+}
+function orderSignature(o){return `${o.id}|${o.status}|${o.total}|${o.updated_at||o.created_at||''}`;}
+function primeNotificationSnapshot(rows){notificationSnapshot=new Map((rows||[]).map(o=>[String(o.id),orderSignature(o)]));}
+function processOrderNotifications(rows,mode){
+ const list=rows||[];
+ if(!notificationSnapshot.size){primeNotificationSnapshot(list);return;}
+ const current=new Map(list.map(o=>[String(o.id),orderSignature(o)]));
+ for(const o of list){
+   const key=String(o.id), prev=notificationSnapshot.get(key);
+   if(!prev){
+     if(mode==='seller') systemNotify('طلب جديد',`طلب ${o.display_id||('#'+o.id)} بقيمة ${money(o.total)} وصل للمحل.`);
+     continue;
+   }
+   if(prev!==current.get(key) && mode==='customer'){
+     const messages={'جاري التجهيز':'تم قبول طلبك وبدأ المحل في تجهيزه.','خرج للتوصيل':'طلبك خرج للتوصيل 🚚','تم التسليم':'تم تسليم طلبك بنجاح ✓'};
+     if(messages[o.status]) systemNotify('تحديث الطلب',messages[o.status]);
+   }
+ }
+ notificationSnapshot=current;
+}
+
+function setSellerAuthMsg(msg, ok=false){
+ const el=document.getElementById('sellerAuthMsg');
+ if(el){el.textContent=msg||'';el.style.color=ok?'#08753f':'#b33';}
+}
+function renderSellerAccount(){
+ const card=document.getElementById('sellerAccountCard'), logged=document.getElementById('sellerLoggedCard'), email=document.getElementById('sellerLoggedEmail');
+ if(!card||!logged)return;
+ if(sellerSession?.access_token){
+   card.classList.add('hidden');logged.classList.remove('hidden');
+   if(email)email.textContent='البريد: '+(sellerSession.email||'');
+ }else{
+   card.classList.remove('hidden');logged.classList.add('hidden');
+ }
+}
+async function sellerSignUp(){
+ const email=(document.getElementById('sellerEmail')?.value||'').trim();
+ const password=document.getElementById('sellerPassword')?.value||'';
+ if(!email||!email.includes('@')){setSellerAuthMsg('اكتب بريدًا إلكترونيًا صحيحًا.');return;}
+ if(password.length<6){setSellerAuthMsg('كلمة المرور يجب أن تكون 6 أحرف على الأقل.');return;}
+ setSellerAuthMsg('جاري إنشاء حساب التاجر...');
+ try{
+   const r=await fetch(`${SUPABASE_URL}/auth/v1/signup`,{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify({email,password,data:{account_type:'merchant'}})});
+   const data=await r.json();
+   if(!r.ok)throw new Error(data.msg||data.error_description||data.message||'تعذر إنشاء الحساب');
+   if(data.access_token){
+     sellerSession={access_token:data.access_token,refresh_token:data.refresh_token,email:data.user?.email||email,user_id:data.user?.id||''};
+     localStorage.setItem('souqna_seller_session',JSON.stringify(sellerSession)); sellerUnlocked=true;
+     await loadSellerShop();
+     setSellerAuthMsg('تم إنشاء حساب التاجر وتسجيل الدخول ✓',true);
+   }else{
+     setSellerAuthMsg('تم إنشاء الحساب ✓ افتح بريدك لتأكيد الحساب، ثم اضغط تسجيل الدخول.');
+   }
+   renderSellerAccount();
+ }catch(e){setSellerAuthMsg(e.message||'تعذر إنشاء الحساب.');}
+}
+async function sellerSignIn(){
+ const email=(document.getElementById('sellerEmail')?.value||'').trim();
+ const password=document.getElementById('sellerPassword')?.value||'';
+ if(!email||!password){setSellerAuthMsg('اكتب البريد الإلكتروني وكلمة المرور أولًا.');return;}
+ setSellerAuthMsg('جاري تسجيل الدخول...');
+ try{
+   const r=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=password`,{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify({email,password})});
+   const data=await r.json();
+   if(!r.ok)throw new Error(data.error_description||data.msg||data.message||'بيانات الدخول غير صحيحة');
+   sellerSession={access_token:data.access_token,refresh_token:data.refresh_token,email:data.user?.email||email,user_id:data.user?.id||''};
+   localStorage.setItem('souqna_seller_session',JSON.stringify(sellerSession)); sellerUnlocked=true;
+   await loadSellerShop();
+   setSellerAuthMsg('تم تسجيل الدخول ✓',true);
+   renderSellerAccount();
+ }catch(e){setSellerAuthMsg(e.message||'تعذر تسجيل الدخول.');}
+}
+function sellerSignOut(){
+ sellerSession=null;currentSellerShop=null;localStorage.removeItem('souqna_seller_session'); sellerUnlocked=false;
+ setSellerAuthMsg('تم تسجيل الخروج.');renderSellerAccount();renderSeller();
+}
+let dbSyncTimer=null;
+function sellerLogin(){
+ if(!sellerSession?.access_token){
+   showPage('seller');
+   setSellerAuthMsg('سجّل الدخول بحساب التاجر أولًا.');
+   return;
+ }
+ sellerUnlocked=true;
+ renderSeller();
+ alert('تم فتح لوحة المحل ✓');
+}
+async function loadSellerShop(){
+ currentSellerShop=null;
+ if(!sellerSession?.access_token){renderSeller();return null;}
+ try{
+  // Refresh the user id from Supabase Auth instead of trusting a possibly stale local session.
+  const ur=await fetch(`${SUPABASE_URL}/auth/v1/user`,{cache:'no-store',headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${sellerSession.access_token}`,Accept:'application/json'}});
+  const ub=await ur.text();
+  if(!ur.ok)throw new Error('تعذر التحقق من جلسة التاجر: '+ub);
+  const authUser=ub?JSON.parse(ub):{};
+  if(!authUser.id)throw new Error('لم يرجع Supabase معرّف حساب التاجر. سجّل الخروج ثم الدخول مرة أخرى.');
+  sellerSession.user_id=authUser.id;
+  sellerSession.email=authUser.email||sellerSession.email;
+  localStorage.setItem('souqna_seller_session',JSON.stringify(sellerSession));
+  const r=await fetch(`${SUPABASE_URL}/rest/v1/shops?select=id,name,owner_id&owner_id=eq.${encodeURIComponent(authUser.id)}&limit=1`,{cache:'no-store',headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${sellerSession.access_token}`,Accept:'application/json'}});
+  const body=await r.text();
+  if(!r.ok)throw new Error('تعذر تحميل المحل من قاعدة البيانات: '+body);
+  const rows=body?JSON.parse(body):[];
+  currentSellerShop=rows[0]||null;
+  if(!currentSellerShop) console.warn('No shop linked to authenticated merchant UID',authUser.id);
+ }catch(e){console.error('Merchant shop lookup failed',e);currentSellerShop=null;}
+ renderSeller();
+ return currentSellerShop;
+}
+function renderSeller(){
+ const login=document.getElementById('sellerLogin'), panel=document.getElementById('sellerPanel');
+ if(!login||!panel)return;
+ if(!sellerUnlocked){login.classList.remove('hidden');panel.classList.add('hidden');return;}
+ login.classList.add('hidden');panel.classList.remove('hidden');
+ const shop=currentSellerShop;
+ const createCard=document.getElementById('createShopCard');if(createCard)createCard.classList.toggle('hidden',!!shop);
+ document.getElementById('sellerShopName').textContent=shop?`🏪 ${shop.name}`:'لا يوجد محل مرتبط بهذا الحساب';
+ renderSellerProducts();
+ const el=document.getElementById('sellerOrders');
+ const list=dbOrders;
+ if(!list.length){el.innerHTML='<div class="empty">لا توجد طلبات حتى الآن</div>';return;}
+ el.innerHTML=list.map(o=>{const c=o.customer||{name:o.customer_name,phone:o.customer_phone,address:o.customer_address};const current=o.status||'جديد';const oid=o.db_id||o.id;return `<div class="order"><div style="display:flex;justify-content:space-between;gap:8px;align-items:center"><b>طلب #${esc(o.display_id||o.id)}</b><span class="pill">${esc(current)}</span></div><div class="muted">${esc(o.date||o.created_at||'')}</div><div class="muted" style="margin-top:5px">💵 الدفع: عند الاستلام — الحالة: ${esc(o.payment_status==='paid'?'تم التحصيل':'غير مدفوع')}</div>${statusSteps(current)}<div style="margin-top:8px">👤 ${esc(c.name||'العميل')}<br>📞 ${esc(c.phone||'')}<br>📍 ${esc(c.address||'')}</div><div style="margin-top:8px">${(o.items||[]).map(x=>`${esc(x.product_name||x.name)} × ${x.quantity||x.qty}`).join('، ')}</div><div class="price" style="margin-top:8px">${money(o.total)}</div><div style="display:grid;grid-template-columns:1fr 1fr;gap:7px;margin-top:9px"><button class="add" ${current==='جاري التجهيز'?'disabled':''} onclick="setOrderStatusById('${esc(oid)}','جاري التجهيز')">قبول الطلب</button><button class="add" style="background:#777" ${current==='خرج للتوصيل'?'disabled':''} onclick="setOrderStatusById('${esc(oid)}','خرج للتوصيل')">خرج للتوصيل</button></div><button class="add" style="width:100%;margin-top:7px;background:#555" ${current==='تم التسليم'?'disabled':''} onclick="setOrderStatusById('${esc(oid)}','تم التسليم')">تم التسليم</button></div>`}).join('');
+}
+function renderSellerProducts(){
+ const el=document.getElementById('sellerProducts'); if(!el)return;
+ const shop=currentSellerShop;
+ const list=shop?products.filter(p=>String(p.shop_id)===String(shop.id)):[];
+ if(!shop){el.innerHTML='<div class="empty">لا يوجد محل مربوط بحساب التاجر. يلزم ربط المتجر بمعرّف حسابك في قاعدة البيانات أولًا.</div>';return;}
+ if(!list.length){el.innerHTML='<div class="empty">لا توجد منتجات لهذا المحل. أضف أول منتج من الأعلى.</div>';return;}
+ el.innerHTML=list.map(p=>`<div class="card product"><div><div class="name">${esc(p.name)}</div><div class="price">${money(p.price)}</div></div><div style="display:flex;gap:7px;align-items:center"><button class="add" style="background:#087f5b" onclick="editSellerProduct('${esc(p.id)}')">تعديل</button><button class="add" style="background:#b3261e" onclick="deleteSellerProduct('${esc(p.id)}')">حذف</button></div></div>`).join('');
+}
+async function syncSellerProducts(){
+ try{
+  products=await api('products','?select=id,name,price,shop_id');
+  renderSellerProducts(); applyLocationFilter();
+ }catch(e){
+  const m=document.getElementById('sellerProductMsg'); if(m)m.textContent='تعذر تحميل المنتجات: '+e.message;
+ }
+}
+function sellerAuthHeaders(extra={}){
+  const token=sellerSession?.access_token;
+  return token?{apikey:SUPABASE_KEY,Authorization:`Bearer ${token}`,...extra}:{apikey:SUPABASE_KEY,...extra};
+}
+async function addSellerProduct(){
+ const name=(document.getElementById('sellerProductName')?.value||'').trim();
+ const price=Number(document.getElementById('sellerProductPrice')?.value);
+ const shop=currentSellerShop;
+ const msg=document.getElementById('sellerProductMsg');
+ if(!shop){if(msg)msg.textContent='لا يوجد محل لإضافة المنتج إليه.';return;}
+ if(!name||!Number.isFinite(price)||price<0){if(msg)msg.textContent='اكتب اسم المنتج والسعر بشكل صحيح.';return;}
+ try{
+  const r=await fetch(`${SUPABASE_URL}/rest/v1/products`,{method:'POST',headers:sellerAuthHeaders({'Content-Type':'application/json',Prefer:'return=representation'}),body:JSON.stringify({name,price,shop_id:shop.id})});
+  const body=await r.text(); if(!r.ok)throw new Error(body);
+  const created=body?JSON.parse(body):[]; products.push(Array.isArray(created)?created[0]:created);
+  document.getElementById('sellerProductName').value=''; document.getElementById('sellerProductPrice').value='';
+  if(msg)msg.textContent='تمت إضافة المنتج ✓';
+  renderSellerProducts(); applyLocationFilter();
+ }catch(e){if(msg)msg.textContent='تعذر إضافة المنتج: '+e.message;}
+}
+async function editSellerProduct(id){
+ const p=products.find(x=>String(x.id)===String(id));
+ if(!p||!currentSellerShop||String(p.shop_id)!==String(currentSellerShop.id)){alert('لا يمكنك تعديل منتج خارج محلك.');return;}
+ const name=prompt('اسم المنتج:',p.name||'');
+ if(name===null)return;
+ const cleanName=name.trim();
+ if(!cleanName)return alert('اكتب اسم المنتج.');
+ const priceText=prompt('السعر بالجنيه:',String(p.price??''));
+ if(priceText===null)return;
+ const price=Number(priceText);
+ if(!Number.isFinite(price)||price<0)return alert('اكتب سعرًا صحيحًا.');
+ try{
+  const r=await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${encodeURIComponent(id)}`,{method:'PATCH',headers:sellerAuthHeaders({'Content-Type':'application/json',Prefer:'return=representation'}),body:JSON.stringify({name:cleanName,price})});
+  const body=await r.text(); if(!r.ok)throw new Error(body);
+  const updated=body?JSON.parse(body):[];
+  const row=Array.isArray(updated)?updated[0]:updated;
+  Object.assign(p,row&&typeof row==='object'?row:{name:cleanName,price});
+  renderSellerProducts(); applyLocationFilter();
+  alert('تم تعديل المنتج ✓');
+ }catch(e){alert('تعذر تعديل المنتج: '+e.message);}
+}
+async function deleteSellerProduct(id){
+ const p=products.find(x=>String(x.id)===String(id));if(!p||!currentSellerShop||String(p.shop_id)!==String(currentSellerShop.id)){alert('لا يمكنك حذف منتج خارج محلك.');return;}
+ if(!confirm('هل تريد حذف المنتج؟'))return;
+ try{
+  const r=await fetch(`${SUPABASE_URL}/rest/v1/products?id=eq.${encodeURIComponent(id)}`,{method:'DELETE',headers:sellerAuthHeaders()});
+  if(!r.ok)throw new Error(await r.text());
+  products=products.filter(p=>String(p.id)!==String(id)); renderSellerProducts(); applyLocationFilter();
+ }catch(e){alert('تعذر حذف المنتج: '+e.message);}
+}
+async function setOrderStatusById(id,status){
+ if(!currentSellerShop){alert('لا يوجد محل مرتبط بحسابك.');return;}
+ const local=dbOrders.find(x=>String(x.db_id||x.id)===String(id));
+ try{
+   const r=await fetch(`${SUPABASE_URL}/rest/v1/orderc?id=eq.${encodeURIComponent(id)}&shop_id=eq.${encodeURIComponent(currentSellerShop.id)}`,{method:'PATCH',headers:sellerAuthHeaders({'Content-Type':'application/json',Prefer:'return=minimal'}),body:JSON.stringify({status})});
+   if(!r.ok)throw new Error(await r.text());
+   if(local)local.status=status;
+   localStorage.setItem('souqna_orders',JSON.stringify(orders));
+   await syncOrdersFromDB();renderOrders();renderSeller();alert(`تم تحديث حالة الطلب إلى: ${status}`);
+ }catch(e){
+   console.error(e);
+   if(local){local.status=status;localStorage.setItem('souqna_orders',JSON.stringify(orders));renderOrders();renderSeller();alert('تم تحديث الحالة على الجهاز فقط. لم تتم مزامنتها مع قاعدة البيانات.');}
+   else alert('تعذر تحديث حالة الطلب في قاعدة البيانات. تأكد من سياسة UPDATE في RLS.');
+ }
+}
+async function syncOrdersFromDB(){
+ try{
+   const phone=account.phone?.trim();
+   const shopId=currentSellerShop?.id;
+   let rows=[];
+   if(phone){
+     const r=await api('orderc',`?select=*&customer_phone=eq.${encodeURIComponent(phone)}&order=created_at.desc`); rows=await r;
+   }
+   const sellerRows=(sellerUnlocked&&shopId)?await fetch(`${SUPABASE_URL}/rest/v1/orderc?select=*&shop_id=eq.${encodeURIComponent(shopId)}&order=created_at.desc`,{cache:'no-store',headers:{apikey:SUPABASE_KEY,Authorization:`Bearer ${sellerSession.access_token}`,Accept:'application/json'}}).then(async r=>{const b=await r.text();if(!r.ok)throw new Error(b);return b?JSON.parse(b):[]}):[];
+   const ids=[...new Set([...rows,...sellerRows].map(x=>x.id))];
+   if(ids.length){
+     const items=sellerUnlocked?await (async()=>{const r=await fetch(`${SUPABASE_URL}/rest/v1/order_items?select=*&order_id=in.(${ids.join(',')})`,{cache:'no-store',headers:sellerAuthHeaders({Accept:'application/json'})});const b=await r.text();if(!r.ok)throw new Error(b);return b?JSON.parse(b):[]})():await api('order_items',`?select=*&order_id=in.(${ids.join(',')})`);
+     const by={};items.forEach(i=>(by[i.order_id]??=[]).push(i));
+     const mapOrder=o=>({...o,db_id:o.id,display_id:o.display_id||('SQ'+String(o.id).padStart(6,'0')+'#'),date:o.created_at?new Date(o.created_at).toLocaleString('ar-EG'):'' ,customer:{name:o.customer_name,phone:o.customer_phone,address:o.customer_address},items:by[o.id]||[]});
+     dbOrders=sellerUnlocked?sellerRows.map(mapOrder):rows.map(mapOrder);
+     // Merchant view contains only orders belonging to the explicitly linked shop. Customer orders are never merged into it.
+   }else dbOrders=[];
+   if(sellerUnlocked) processOrderNotifications(sellerRows,'seller');
+   else if(account.phone) processOrderNotifications(rows,'customer');
+   renderOrders();renderSeller();
+   return true;
+ }catch(e){console.error('DB sync failed',e);return false;}
+}
+function startDbSync(){
+ if(dbSyncTimer)clearInterval(dbSyncTimer);
+ dbSyncTimer=setInterval(()=>{
+   if(document.hidden)return;
+   if(sellerUnlocked || account.phone) syncOrdersFromDB();
+ },5000);
+}
+
+async function refreshSouqnaSession(session, storageKey){
+ if(!session?.refresh_token) throw new Error('انتهت جلسة الدخول. سجّل الدخول مرة أخرى ثم أعد المحاولة.');
+ const r=await fetch(`${SUPABASE_URL}/auth/v1/token?grant_type=refresh_token`,{method:'POST',headers:{apikey:SUPABASE_KEY,'Content-Type':'application/json'},body:JSON.stringify({refresh_token:session.refresh_token})});
+ const raw=await r.text();let data={};try{data=raw?JSON.parse(raw):{}}catch{}
+ if(!r.ok||!data.access_token) throw new Error('انتهت جلسة الدخول ولا يمكن تجديدها. سجّل الدخول مرة أخرى.');
+ const next={...session,access_token:data.access_token,refresh_token:data.refresh_token||session.refresh_token,email:data.user?.email||session.email,user_id:data.user?.id||session.user_id};
+ if(storageKey==='souqna_customer_session')customerSession=next;else sellerSession=next;
+ localStorage.setItem(storageKey,JSON.stringify(next));return next;
+}
+function jwtNeedsRefresh(token){try{const part=token.split('.')[1].replace(/-/g,'+').replace(/_/g,'/');const payload=JSON.parse(decodeURIComponent(escape(atob(part))));return !payload.exp||payload.exp*1000<Date.now()+60000;}catch{return true;}}
+async function ensureActiveSession(){
+ let session=customerSession?.access_token?customerSession:sellerSession?.access_token?sellerSession:null;
+ if(!session)throw new Error('سجّل الدخول أولًا من صفحة حسابي أو حساب التاجر.');
+ const key=session===customerSession?'souqna_customer_session':'souqna_seller_session';
+ if(jwtNeedsRefresh(session.access_token))session=await refreshSouqnaSession(session,key);
+ return {session,key};
+}
+async function sessionFetch(url,options={}){
+ let {session,key}=await ensureActiveSession();
+ const make=()=>fetch(url,{...options,headers:{...(options.headers||{}),apikey:SUPABASE_KEY,Authorization:`Bearer ${session.access_token}`}});
+ let response=await make();
+ if(response.status===401){session=await refreshSouqnaSession(session,key);response=await make();}
+ return response;
+}
+const featureConfig={used:{table:'used_listings',list:'usedList',images:'usedImages',preview:'usedImagesPreview',title:'usedTitle',price:'usedPrice',phone:'usedPhone',gov:'usedGov',area:'usedArea',desc:'usedDesc',msg:'usedMsg'},crafts:{table:'craftspeople',list:'craftsList',title:'craftName',type:'craftType',phone:'craftPhone',gov:'craftGov',area:'craftArea',desc:'craftDesc',msg:'craftsMsg'},couriers:{table:'local_couriers',list:'couriersList',title:'courierName',phone:'courierPhone',gov:'courierGov',area:'courierArea',vehicle:'courierVehicle',fee:'courierFee',msg:'couriersMsg'},cars:{table:'car_listings',list:'carsList',images:'carImages',preview:'carImagesPreview',title:'carTitle',type:'carCategory',price:'carPrice',phone:'carPhone',gov:'carGov',area:'carArea',desc:'carDesc',msg:'carsMsg'},materials:{table:'material_listings',list:'materialsList',images:'materialImages',preview:'materialImagesPreview',title:'materialTitle',type:'materialCategory',price:'materialPrice',phone:'materialPhone',gov:'materialGov',area:'materialArea',desc:'materialDesc',msg:'materialsMsg'},realestate:{table:'real_estate_listings',list:'realestateList',images:'estateImages',preview:'estateImagesPreview',title:'estateTitle',type:'estateCategory',price:'estatePrice',phone:'estatePhone',gov:'estateGov',area:'estateArea',desc:'estateDesc',msg:'realestateMsg'}};
+function activeUser(){const s=customerSession?.access_token?customerSession:sellerSession?.access_token?sellerSession:null;return s?.access_token?{id:s.user_id,email:s.email,token:s.access_token}:null;}
+function userHeaders(extra={}){const u=activeUser();return {apikey:SUPABASE_KEY,Authorization:`Bearer ${u?.token||SUPABASE_KEY}`,...extra};}
+async function loadFeature(type){const c=featureConfig[type];const el=document.getElementById(c.list);if(!el)return;try{const rows=await api(c.table,'?select=*&order=created_at.desc&limit=100');if(!rows.length){el.innerHTML='<div class="empty">لا توجد بيانات منشورة حتى الآن.</div>';return;}el.innerHTML=rows.map(r=>{let title=r.title||r.name||'بدون اسم';let details=[r.category,r.governorate,r.area,r.description,r.vehicle_type].filter(Boolean).map(esc).join(' • ');let price=r.price!=null?`<div class="price">${money(r.price)}</div>`:r.delivery_fee!=null?`<div class="price">توصيل: ${money(r.delivery_fee)}</div>`:'';let pics=Array.isArray(r.image_urls)&&r.image_urls.length?`<div class="listing-images">${r.image_urls.map(url=>`<img src="${esc(url)}" alt="صورة الإعلان" loading="lazy" onclick="window.open(this.src,'_blank')">`).join('')}</div>`:'';return `<div class="card">${pics}<div class="name">${esc(title)}</div>${r.phone?`<div>📞 <a href="tel:${esc(r.phone)}">${esc(r.phone)}</a></div>`:''}${details?`<div class="muted" style="margin:7px 0">${details}</div>`:''}${price}</div>`}).join('');}catch(e){el.innerHTML='<div class="empty">تعذر تحميل البيانات. تأكد من تطبيق ملف إعداد الميزات المرفق بقاعدة البيانات.</div>';console.error(e);}}
+async function uploadListingImages(type){const c=featureConfig[type];if(!c.images)return [];const input=document.getElementById(c.images),files=Array.from(input?.files||[]);if(files.length>8)throw new Error('اختار 8 صور كحد أقصى لكل إعلان.');const u=activeUser();const urls=[];for(const file of files){if(!file.type.startsWith('image/'))throw new Error('الملف المختار ليس صورة.');if(file.size>5*1024*1024)throw new Error('حجم الصورة الواحدة يجب ألا يزيد عن 5 ميجابايت.');const safe=file.name.replace(/[^a-zA-Z0-9._-]/g,'_');const path=`${u.id}/${type}/${Date.now()}_${Math.random().toString(36).slice(2)}_${safe}`;const res=await fetch(`${SUPABASE_URL}/storage/v1/object/souqna-listing-images/${path}`,{method:'POST',headers:userHeaders({'Content-Type':file.type,'x-upsert':'false'}),body:file});if(!res.ok)throw new Error('تعذر رفع الصور. تأكد من تنفيذ إعداد الصور في ملف SQL المرفق. '+await res.text());urls.push(`${SUPABASE_URL}/storage/v1/object/public/souqna-listing-images/${path}`);}return urls;}
+function setupListingImagePreviews(){[['usedImages','usedImagesPreview'],['carImages','carImagesPreview'],['materialImages','materialImagesPreview'],['estateImages','estateImagesPreview']].forEach(([inputId,previewId])=>{const input=document.getElementById(inputId),preview=document.getElementById(previewId);if(!input||!preview)return;input.addEventListener('change',()=>{const files=Array.from(input.files||[]);preview.innerHTML=files.length?`<div class="image-preview">${files.map(f=>`<img src="${URL.createObjectURL(f)}" alt="معاينة الصورة">`).join('')}</div><div>${files.length} صورة مختارة</div>`:'لم يتم اختيار صور بعد';});});}
+async function submitListing(type){const c=featureConfig[type],u=activeUser(),msg=document.getElementById(c.msg);if(!u){msg.textContent='سجّل الدخول أولًا من صفحة حسابي أو حساب التاجر.';return;}const val=k=>document.getElementById(c[k])?.value.trim()||'';let row={user_id:u.id};if(type==='used'){row.title=val('title');row.price=Number(val('price'));row.phone=val('phone');row.governorate=val('gov');row.area=val('area');row.description=val('desc');if(!row.title||!row.phone||!val('price')){msg.textContent='اكتب اسم السلعة والسعر ورقم التواصل.';return;}}else if(type==='crafts'){row.name=val('title');row.category=val('type');row.phone=val('phone');row.governorate=val('gov');row.area=val('area');row.description=val('desc');if(!row.name||!row.category||!row.phone){msg.textContent='اكتب الاسم والتخصص ورقم الهاتف.';return;}}else if(type==='couriers'){row.name=val('title');row.phone=val('phone');row.governorate=val('gov');row.area=val('area');row.vehicle_type=val('vehicle');row.delivery_fee=val('fee')?Number(val('fee')):null;if(!row.name||!row.phone||!row.area){msg.textContent='اكتب الاسم ورقم الهاتف والمنطقة.';return;}}else{row.title=val('title');row.category=val('type');row.price=val('price')?Number(val('price')):null;row.phone=val('phone');row.governorate=val('gov');row.area=val('area');row.description=val('desc');if(!row.title||!row.category||!row.phone||!row.area){msg.textContent='اكتب العنوان والتصنيف ورقم التواصل والمنطقة.';return;}if(!row.price&&type!=='cars'){msg.textContent='اكتب السعر أو قيمة الإيجار بالجنيه.';return;}}try{await ensureActiveSession();if(c.images){msg.textContent='جاري رفع الصور ونشر الإعلان...';row.image_urls=await uploadListingImages(type);}const r=await sessionFetch(`${SUPABASE_URL}/rest/v1/${c.table}`,{method:'POST',headers:{'Content-Type':'application/json',Prefer:'return=representation'},body:JSON.stringify(row)});const body=await r.text();if(!r.ok)throw new Error(body.includes('JWT expired')?'انتهت جلسة الدخول. سجّل الدخول مرة أخرى ثم أعد النشر.':body);msg.textContent='تم النشر بنجاح ✓';if(c.images&&document.getElementById(c.images))document.getElementById(c.images).value='';if(c.preview)document.getElementById(c.preview).textContent='لم يتم اختيار صور بعد';['title','price','phone','gov','area','desc','type','vehicle','fee'].forEach(k=>{const id=c[k];if(id&&document.getElementById(id))document.getElementById(id).value='';});await loadFeature(type);}catch(e){msg.textContent='تعذر النشر: '+e.message;}}
+async function createSellerShop(){const msg=document.getElementById('createShopMsg');if(!sellerSession?.access_token||!sellerSession.user_id){msg.textContent='سجّل الخروج ثم الدخول مرة أخرى.';return;}const name=document.getElementById('newShopName').value.trim();if(!name){msg.textContent='اكتب اسم المحل.';return;}const row={name,owner_id:sellerSession.user_id,phone:document.getElementById('newShopPhone').value.trim(),address:document.getElementById('newShopAddress').value.trim(),governorate:document.getElementById('newShopGov').value.trim(),area:document.getElementById('newShopArea').value.trim()};try{const r=await fetch(`${SUPABASE_URL}/rest/v1/shops`,{method:'POST',headers:sellerAuthHeaders({'Content-Type':'application/json',Prefer:'return=representation'}),body:JSON.stringify(row)});const body=await r.text();if(!r.ok)throw new Error(body);const rows=body?JSON.parse(body):[];currentSellerShop=Array.isArray(rows)?rows[0]:rows;msg.textContent='تم إنشاء المحل وربطه بحسابك ✓';await load();renderSeller();}catch(e){msg.textContent='تعذر إنشاء المحل: '+e.message;}}
+function showPage(page){['home','shop','cart','orders','account','seller','used','crafts','couriers','cars','materials','realestate'].forEach(x=>{const el=document.getElementById(x+'Page');if(el)el.classList.toggle('active',x===page);const n=document.getElementById('nav'+x.charAt(0).toUpperCase()+x.slice(1));if(n)n.classList.toggle('active',x===page)});if(page==='cart')renderCart();if(page==='orders')renderOrders();if(page==='account'){loadAccount();renderCustomerAccount();}if(page==='home')applyLocationFilter();if(page==='shop')renderShopDetail();if(page==='seller'){renderSellerAccount();if(sellerUnlocked)loadSellerShop().then(()=>syncOrdersFromDB());else renderSeller();}if(page==='used')loadFeature('used');if(page==='crafts')loadFeature('crafts');if(page==='couriers')loadFeature('couriers');if(page==='cars')loadFeature('cars');if(page==='materials')loadFeature('materials');if(page==='realestate')loadFeature('realestate');}
+setupListingImagePreviews();setupLocations();load();renderOrders();loadAccount();renderCustomerAccount();renderSeller();startDbSync();
+</script>
+</body>
+</html>

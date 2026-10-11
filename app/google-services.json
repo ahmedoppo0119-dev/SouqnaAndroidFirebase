@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "696834578709",
+    "project_id": "souqna-21147",
+    "storage_bucket": "souqna-21147.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:696834578709:android:f4e5f14a30bf3a50e3f11c",
+        "android_client_info": {
+          "package_name": "com.souqna.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC0Um_uyd4RD4KrTTTrydi7Ew3nVvd3gQE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
