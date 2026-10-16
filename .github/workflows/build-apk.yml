@@ -24,35 +24,54 @@ jobs:
         uses: gradle/actions/setup-gradle@v4
 
       - name: Inspect project
+        shell: bash
         run: |
-          echo "Project files:"
-          ls -la
-          echo "App files:"
-          ls -la app
-          find . -maxdepth 4 -type f \
-            \( -name "gradlew" \
-            -o -name "settings.gradle" \
-            -o -name "settings.gradle.kts" \
-            -o -name "build.gradle" \
-            -o -name "build.gradle.kts" \)
+          echo "Searching for Android project..."
+          find . -maxdepth 5 -type f \( \
+            -name "gradlew" -o \
+            -name "settings.gradle" -o \
+            -name "settings.gradle.kts" \
+          \) -print
 
       - name: Build APK
+        shell: bash
         run: |
-          if [ -f gradlew ]; then
+          set -e
+
+          PROJECT_DIR=""
+
+          if [ -f "gradlew" ]; then
+            PROJECT_DIR="."
+          elif [ -f "app/gradlew" ]; then
+            PROJECT_DIR="app"
+          elif [ -f "Souqna_Client_Customer/gradlew" ]; then
+            PROJECT_DIR="Souqna_Client_Customer"
+          elif [ -f "SouqnaAndroidFirebase/gradlew" ]; then
+            PROJECT_DIR="SouqnaAndroidFirebase"
+          fi
+
+          if [ -n "$PROJECT_DIR" ]; then
+            cd "$PROJECT_DIR"
             chmod +x gradlew
             ./gradlew assembleDebug
-          elif [ -f gradle/wrapper/gradle-wrapper.jar ] && \
-               [ -f gradle/wrapper/gradle-wrapper.properties ]; then
-            gradle assembleDebug
           else
-            echo "ERROR: Gradle wrapper is incomplete or missing."
-            exit 1
+            echo "Gradle wrapper not found. Checking system Gradle."
+
+            if [ -f "settings.gradle" ] || \
+               [ -f "settings.gradle.kts" ]; then
+              gradle assembleDebug
+            else
+              echo "ERROR: Android project root not found."
+              echo "Check the repository folder structure."
+              exit 1
+            fi
           fi
 
       - name: Upload APK
         uses: actions/upload-artifact@v4
         with:
           name: Souqna-APK
-          path: app/build/outputs/apk/debug/*.apk
+          path: |
+            **/build/outputs/apk/debug/*.apk
           if-no-files-found: error
           retention-days: 7
